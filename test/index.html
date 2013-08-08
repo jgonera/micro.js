@@ -6,35 +6,27 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      a {
-        position: absolute;
+      #log {
+        position: fixed;
+        top: 0;
+        padding: 10px;
+        background: #fff;
+      }
+
+      #test {
         background: #ccc;
-        width: 100px;
         border: 1px solid #000;
-      }
-
-      #hello {
-        left: -100px;
-      }
-
-      #go {
-        left: 0;
-      }
-
-      #hello.open {
-        left: 0;
-      }
-
-      #go.open {
-        left: 100px;
+        padding: 10px;
       }
     </style>
-  </head>
-  <body>
-    <a id="hello" href="#">Hello</a><a id="go" href="#">Go</a>
-
     <script src="jquery-1.10.2.js"></script>
     <script src="../micro.tap.js"></script>
+  </head>
+  <body>
+    <pre id="log"></pre>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vestibulum facilisis lectus. Donec varius elit non facilisis scelerisque. Aliquam in magna consequat, sagittis mi id, interdum nunc. Integer tincidunt, nulla vitae mollis pretium, sapien sem laoreet odio, ac placerat mi ipsum id enim. Maecenas feugiat lacus at euismod facilisis. Praesent quis risus ornare, aliquet lacus sed, mattis metus. Maecenas vel ligula a felis fringilla faucibus. Mauris pellentesque magna purus. Integer dapibus felis vitae augue tincidunt, id egestas erat porttitor. Ut consequat mauris id turpis gravida, sed pellentesque tortor fringilla. Morbi bibendum elit id lacus ornare aliquet. Donec vestibulum enim sem, id rhoncus lorem feugiat vitae. Quisque eget neque interdum arcu fringilla sollicitudin. Quisque metus nibh, volutpat id dignissim id, ornare a risus. In in lacinia enim.
+    <a id="test" href="#">test</a>
+    Ut aliquam enim quis magna volutpat, quis mattis quam tempor. Aliquam at viverra velit, id laoreet sapien. Nam vel sapien ullamcorper, fringilla nibh a, fermentum metus. Etiam eget elit sapien. Sed pretium enim a nulla vulputate mattis. Sed nisl elit, lacinia sed commodo et, condimentum a neque. Morbi eget pellentesque metus. Sed laoreet, orci non tristique placerat, nisl urna pharetra metus, sed scelerisque dui libero eu eros. Suspendisse potenti. Donec venenatis eleifend quam. Suspendisse velit risus, tincidunt quis nisi ornare, placerat tincidunt dui. Proin non dui at sem tincidunt sagittis. Nam luctus accumsan lorem, sollicitudin malesuada lorem vehicula eu. Fusce ac orci at nibh aliquet viverra tristique quis mauris.
     <script src="test.js"></script>
   </body>
 </html>

@@ -1,17 +1,28 @@
+/**
+ * micro.tap
+ * https://github.com/jgonera/micro.tap
+ */
+
 ;(function($) {
-  var $body = $('body'), tapOffset, $target;
+  var $window = $(window), moved;
 
-  $body.on('touchend', function(ev) {
-    $target = $(ev.target);
-    tapOffset = $target.offset();
-    $target.trigger('tap');
-    ev.preventDefault();
+  function handleTap(ev) {
+    var $target = $(ev.target), tapEv = $.Event();
+    if (!moved) $target.trigger('tap', tapEv);
+    if (!tapEv.isDefaultPrevented()) $target.one('click', false);
+  }
 
-    $('a').on('click.tap', function(ev) {
-      ev.stopImmediatePropagation();
-    });
-    setTimeout(function() {
-      $('a').off('.tap');
-    }, 500);
-  });
+  if ('ontouchstart' in window) {
+    $window.
+      on('touchstart', function() {
+        moved = false;
+      }).
+      on('touchmove', function() {
+        moved = true;
+      }).
+      on('touchend', handleTap);
+  } else {
+    $window.on('mouseup', handleTap);
+  }
 }(jQuery));
+
