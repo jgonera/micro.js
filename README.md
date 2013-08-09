@@ -7,6 +7,11 @@ Adds a `tap` event in jQuery with the minimal amount of code. When touch
 events are present `tap` fires on `touchend`. For browsers without touch
 events support falls back to `mouseup` event.
 
+Ghostclick prevention inspired by https://developers.google.com/mobile/articles/fast_buttons
+
+Usage
+-----
+
 ```js
 $('button').on('tap', function() { ... });
 $('a').on('tap', function(ev) {
@@ -15,4 +20,3 @@ $('a').on('tap', function(ev) {
   ...
 });
 ```
-

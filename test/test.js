@@ -1,8 +1,27 @@
-$('#test').on('tap', function(ev) {
-  ev.preventDefault();
-  if (window.location.href.slice(-1) !== '#') {
-    $('#log').append("OK (URL doesn't end with #)\n");
-  } else {
-    $('#log').append("FAIL (URL ends with #)\n");
+;(function($) {
+
+  function test() {
+    setTimeout(function() {
+      if (!/#.+/.test(window.location.href)) {
+        $('#log').append("OK (URL without #sth)\n");
+      } else {
+        $('#log').append("FAIL (URL with #sth)\n");
+      }
+
+      window.location.hash = '';
+    }, 500);
   }
-});
+
+  $('#test').on('tap', function(ev) {
+    ev.preventDefault();
+    test();
+  });
+
+  $('#hidden, #test-position').on('tap', function(ev) {
+    ev.preventDefault();
+    $('body').toggleClass('toggled');
+
+    test();
+  });
+
+}(jQuery));

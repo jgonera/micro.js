@@ -4,17 +4,24 @@
  */
 
 ;(function($) {
-  var $window = $(window), moved;
+  var $window = $(window), moved, tapEv;
 
   function handleTap(ev) {
-    var $target = $(ev.target), tapEv = $.Event();
-    if (!moved) $target.trigger('tap', tapEv);
-    if (!tapEv.isDefaultPrevented()) $target.one('click', false);
+    tapEv = $.Event('tap');
+    if (!moved) $(ev.target).trigger(tapEv);
   }
+
+  // jQuery's on() doesn't allow useCapture argument (last argument, true)
+  window.addEventListener('click', function(ev) {
+    if (tapEv.isDefaultPrevented()) {
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
+  }, true);
 
   if ('ontouchstart' in window) {
     $window.
-      on('touchstart', function() {
+      on('touchstart', function(ev) {
         moved = false;
       }).
       on('touchmove', function() {
