@@ -29,7 +29,8 @@
       }).
       on('touchend', handleTap);
   } else {
-    $window.on('mouseup', handleTap);
+    // need to set useCapture to true so that this runs before the click callback
+    window.addEventListener('mouseup', handleTap, true);
   }
 }(jQuery));
 
