@@ -3,6 +3,21 @@ micro.js
 Tiny jQuery plugins solving common problems.
 
 
+micro.autosize
+--------------
+
+Autoresizing textareas.
+
+### Usage
+
+```js
+$('textarea').microAutosize();
+
+// resizing after manual content change
+$('textarea').val('my content').trigger('input');
+```
+
+
 micro.tap
 ---------
 
