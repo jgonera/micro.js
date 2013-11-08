@@ -1,6 +1,6 @@
 /**
  * micro.tap
- * https://github.com/jgonera/micro.tap
+ * https://github.com/jgonera/micro.js
  */
 
 ;(function($) {

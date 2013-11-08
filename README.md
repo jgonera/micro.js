@@ -1,5 +1,10 @@
+micro.js
+========
+Tiny jQuery plugins solving common problems.
+
+
 micro.tap
-=========
+---------
 
 Quick taps with no delays on mobile browsers.
 
@@ -9,8 +14,7 @@ events support falls back to `mouseup` event.
 
 Ghostclick prevention inspired by https://developers.google.com/mobile/articles/fast_buttons
 
-Usage
------
+### Usage
 
 ```js
 $('button').on('tap', function() { ... });
@@ -20,3 +24,4 @@ $('a').on('tap', function(ev) {
   ...
 });
 ```
+
