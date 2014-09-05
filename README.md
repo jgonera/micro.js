@@ -8,6 +8,10 @@ micro.autosize
 
 Autoresizing textareas.
 
+Resizes a textarea so that the whole content fits in it without a scrollbar.
+By default, the textarea is resized on an `input` event, but if content is
+modified programmatically then you need to trigger an `input` event manually.
+
 ### Usage
 
 ```js
