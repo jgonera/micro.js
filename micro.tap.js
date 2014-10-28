@@ -1,9 +1,13 @@
 /**
  * micro.tap
- * https://github.com/jgonera/micro.js
+ * Makes tap event available in jQuery.
+ * This can be used to beat the 300ms delay that plagues iOS Safari.
+ * @see https://developers.google.com/mobile/articles/fast_buttons
+ * Note: Surplus in Chrome 32 (http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away)
+ * https://github.com/jgonera/micro.tap
  */
 
-;(function($) {
+;(function ($) {
   var $window = $(window), moved, tapEv;
 
   function handleTap(ev) {
@@ -11,9 +15,10 @@
     if (!moved) $(ev.target).trigger(tapEv);
   }
 
-  // jQuery's on() doesn't allow useCapture argument (last argument, true)
-  window.addEventListener('click', function(ev) {
-    if (tapEv.isDefaultPrevented()) {
+  // FIXME: jQuery's on() doesn't allow useCapture argument (last argument, true)
+  window.addEventListener('click', function (ev) {
+    // a tap event might be fired programmatically so ensure tapEv has been defined
+    if (tapEv && tapEv.isDefaultPrevented()) {
       ev.stopPropagation();
       ev.preventDefault();
     }
@@ -21,16 +26,17 @@
 
   if ('ontouchstart' in window) {
     $window.
-      on('touchstart', function(ev) {
+      on('touchstart', function (ev) {
         moved = false;
       }).
-      on('touchmove', function() {
+      on('touchmove', function () {
         moved = true;
       }).
       on('touchend', handleTap);
-  } else {
-    // need to set useCapture to true so that this runs before the click callback
-    window.addEventListener('mouseup', handleTap, true);
   }
-}(jQuery));
 
+  // Unconditionally register the mouseup as certain devices may support both touch
+  // and mouse events e.g. BlackBerry Bold 9900
+  // FIXME: jQuery's on() doesn't allow useCapture argument (last argument, true)
+  window.addEventListener('mouseup', handleTap, true);
+}(jQuery));
